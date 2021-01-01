@@ -8,11 +8,12 @@ class Dot {
   float fitness = 0;
   
   boolean reachedGoal = false;
+  boolean isBest = false;
   
   Dot() {
     brain = new Brain(400);
     
-    pos = new PVector(width/2, height - 400);
+    pos = new PVector(width/2, height - 10);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0);
     
@@ -21,8 +22,18 @@ class Dot {
   // -------------------------------------------------------------------------
 
   void show() {
-    fill(0);
-    ellipse(pos.x, pos.y, 4, 4);
+    if(isBest) {
+      
+      fill(0, 255, 0);
+      stroke(0,255,0);
+      ellipse(pos.x, pos.y, 6, 6);
+      
+    } else {
+      
+      fill(0);
+      stroke(0);
+      ellipse(pos.x, pos.y, 4, 4);
+    }
   }
   
   

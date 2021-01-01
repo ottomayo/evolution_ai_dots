@@ -3,7 +3,7 @@ PVector goal = new PVector(300, 10);
 
 
 void setup() {
-  size(600, 600);
+  size(700, 700);
   test = new Population(1000);
   
 }

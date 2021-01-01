@@ -3,6 +3,7 @@ class Population {
   float fitnessSum;
   
   int gen = 1;
+  int bestDot = 0;
   
   Population(int size) {
     dots = new Dot[size];
@@ -16,11 +17,14 @@ class Population {
   // --------------------------------------------------------------------------
   
   void show() {
-    for(int i = 0; i < dots.length; i++) {
+    for(int i = 1; i < dots.length; i++) {
       dots[i].show();
     }
+    dots[0].show();
     
     // Write the generation number in the corner
+    fill(0);
+    stroke(0);
     text("Generation: ", 20, height - 20);
     text(gen, 90, height - 20);
   }
@@ -66,7 +70,12 @@ class Population {
     Dot[] newDots = new Dot[dots.length];
     calculateFitnessSum();
     
-    for(int i = 0; i < newDots.length; i++) {
+    setBestDot();
+    newDots[0] = dots[bestDot].getBaby();
+    
+    newDots[0].isBest = true;
+    
+    for(int i = 1; i < newDots.length; i++) {
       
       // Select parent based on fitness
       Dot parent = selectParent();
@@ -116,9 +125,27 @@ class Population {
   // -------------------------------------------------------------------------------
 
   void mutateBabies() {
-    for(int i = 0; i < dots.length; i++) {
+    for(int i = 1; i < dots.length; i++) {
       dots[i].brain.mutate();
     }
+  }
+  
+  
+  // ---------------------------------------------------------------------------------
+  
+  void setBestDot() {
+    float max = 0;
+    int maxIndex = 0;
+    for(int i = 0; i < dots.length; i++) {
+      if(dots[i].fitness > max) {
+        max = dots[i].fitness;
+        maxIndex = i;
+      }
+    }
+    
+    bestDot = maxIndex;
+    
+    
   }
   
   
