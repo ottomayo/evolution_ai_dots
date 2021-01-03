@@ -1,12 +1,15 @@
 Population test;
-PVector goal = new PVector(300, 10);
 
 
 void setup() {
   size(700, 700);
+  //fullScreen();
   test = new Population(1000);
   
 }
+
+
+PVector goal = new PVector(700, 10);
 
 
 void draw() {

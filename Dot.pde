@@ -11,7 +11,7 @@ class Dot {
   boolean isBest = false;
   
   Dot() {
-    brain = new Brain(400);
+    brain = new Brain(300);
     
     pos = new PVector(width/2, height - 10);
     vel = new PVector(0, 0);
@@ -25,8 +25,8 @@ class Dot {
     if(isBest) {
       
       fill(0, 255, 0);
-      stroke(0,255,0);
-      ellipse(pos.x, pos.y, 6, 6);
+      stroke(0,0,0);
+      ellipse(pos.x, pos.y, 8, 8);
       
     } else {
       
@@ -77,7 +77,7 @@ class Dot {
   
   void calculateFitness() {
     if(reachedGoal) {
-      fitness = 1.0/(float)(brain.step * brain.step);
+      fitness = 1.0 / 16.0 + 10000.0 / (float)(brain.step * brain.step);
       
     } else {
       float distanceToGoal = dist(pos.x, pos.y, goal.x, goal.y);

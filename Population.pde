@@ -36,7 +36,7 @@ class Population {
     for(int i = 0; i < dots.length; i++) {
       dots[i].update();
     }
-    println(gen);
+    // println(gen);
   }
   
   
@@ -68,9 +68,9 @@ class Population {
   
   void naturalSelection() {
     Dot[] newDots = new Dot[dots.length];
+    setBestDot();
     calculateFitnessSum();
     
-    setBestDot();
     newDots[0] = dots[bestDot].getBaby();
     
     newDots[0].isBest = true;
@@ -134,12 +134,21 @@ class Population {
   // ---------------------------------------------------------------------------------
   
   void setBestDot() {
+    println("Setting best dot now");
+    
     float max = 0;
-    int maxIndex = 0;
-    for(int i = 0; i < dots.length; i++) {
+    int maxIndex = 2;
+    
+    for(int i = 1; i < dots.length; i++) {
       if(dots[i].fitness > max) {
         max = dots[i].fitness;
         maxIndex = i;
+        
+        print("New best dot || ");
+        print(maxIndex);
+        print(" ");
+        print(dots[i].fitness);
+        println();
       }
     }
     
