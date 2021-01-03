@@ -11,7 +11,7 @@ class Dot {
   boolean isBest = false;
   
   Dot() {
-    brain = new Brain(300);
+    brain = new Brain(350);
     
     pos = new PVector(width/2, height - 10);
     vel = new PVector(0, 0);

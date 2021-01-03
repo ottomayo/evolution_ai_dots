@@ -2,8 +2,8 @@ Population test;
 
 
 void setup() {
-  size(700, 700);
-  //fullScreen();
+  //size(700, 700);
+  fullScreen();
   test = new Population(1000);
   
 }
