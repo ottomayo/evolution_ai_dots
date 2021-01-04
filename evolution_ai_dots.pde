@@ -1,15 +1,18 @@
+int WIDTH = 700;
+int HEIGHT = 700;
+
 Population test;
 
 
 void setup() {
-  //size(700, 700);
-  fullScreen();
+  size(700, 700);
+  //fullScreen();
   test = new Population(1000);
   
 }
 
 
-PVector goal = new PVector(700, 10);
+PVector goal = new PVector(WIDTH/2, 10);
 
 
 void draw() {
@@ -17,6 +20,11 @@ void draw() {
   
   fill(255, 0, 0);
   ellipse(goal.x, goal.y, 10, 10);
+  
+  fill(0,0,255);
+  
+  rect(0, 200, 500, 10);
+  rect(200, 400, 500, 10);
   
   if(test.allDotsDead()) {
     
