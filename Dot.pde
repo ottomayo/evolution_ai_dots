@@ -70,7 +70,7 @@ class Dot {
         
       } else if(pos.x > 0 && pos.x < 500 && pos.y > 200 && pos.y < 210) {
         // If hit obstacle
-        dead = true;
+        //dead = true;
       } else if(pos.x > 200 && pos.x < 700 && pos.y > 400 && pos.y < 410) {
         // If hit obstacle
         dead = true;
