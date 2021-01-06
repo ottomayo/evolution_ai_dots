@@ -30,12 +30,15 @@ class Population {
     fill(0);
     stroke(0);
     text("Generation: ", 20, height - 20);
-    text(gen, 90, height - 20);
+    text(gen, 110, height - 20);
     
     text("Steps left: ", 20, height - 40);
-    text(stepsLeft, 90, height - 40);
+    text(stepsLeft, 110, height - 40);
     
     stepsLeft -= 1;
+    
+    text("Number dead: ", 20, height - 60);
+    text(numberDead(), 110, height - 60);
 
   }
   
@@ -74,6 +77,18 @@ class Population {
     
     return true;
     
+  }
+  
+  int numberDead() {
+    int numberDead = 0;
+    
+    for(int i = 0; i < dots.length; i++) {
+      if(dots[i].dead) {
+        numberDead += 1;
+      }
+    }
+    
+    return numberDead;
   }
   
   

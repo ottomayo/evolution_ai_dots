@@ -1,7 +1,7 @@
 int WIDTH = 700;
 int HEIGHT = 700;
 
-int stepsPerGen = 1500;
+int stepsPerGen = 600;
 
 PVector goal = new PVector(WIDTH/2, 10);
 Population test;
