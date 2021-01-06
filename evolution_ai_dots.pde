@@ -1,17 +1,19 @@
 int WIDTH = 700;
 int HEIGHT = 700;
 
+int stepsPerGen = 1500;
+
 PVector goal = new PVector(WIDTH/2, 10);
 Population test;
-Obstacles obs;
+Obstacles obstacles;
 
 
 void setup() {
   size(700, 700);
   //fullScreen();
   
-  test = new Population(1000);
-  obs = new Obstacles();
+  test = new Population(1500);
+  obstacles = new Obstacles();
   
 }
 
@@ -21,7 +23,7 @@ void draw() {
   fill(255, 0, 0);
   ellipse(goal.x, goal.y, 10, 10);
   
-  obs.draw();
+  obstacles.draw();
   
   if(test.allDotsDead()) {
     

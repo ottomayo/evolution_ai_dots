@@ -5,7 +5,9 @@ class Population {
   int gen = 1;
   int bestDot = 0;
   
-  int minStep = 350;
+  int stepsLeft = stepsPerGen;
+  
+  int minStep = stepsPerGen;
   
   Population(int size) {
     dots = new Dot[size];
@@ -29,6 +31,12 @@ class Population {
     stroke(0);
     text("Generation: ", 20, height - 20);
     text(gen, 90, height - 20);
+    
+    text("Steps left: ", 20, height - 40);
+    text(stepsLeft, 90, height - 40);
+    
+    stepsLeft -= 1;
+
   }
   
   
@@ -93,6 +101,7 @@ class Population {
     dots = newDots.clone();
     
     gen ++;
+    stepsLeft = stepsPerGen;
     
   }
   
@@ -139,8 +148,6 @@ class Population {
   // ---------------------------------------------------------------------------------
   
   void setBestDot() {
-    println("Setting best dot now");
-    
     float max = 0;
     int maxIndex = 2;
     
@@ -148,12 +155,6 @@ class Population {
       if(dots[i].fitness > max) {
         max = dots[i].fitness;
         maxIndex = i;
-        
-        print("New best dot || ");
-        print(maxIndex);
-        print(" ");
-        print(dots[i].fitness);
-        println();
       }
     }
     

@@ -1,5 +1,5 @@
 class Brain {
-  PVector[] directions;
+  PVector directions[];
   int step = 0;
   
   

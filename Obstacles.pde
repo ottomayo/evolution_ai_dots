@@ -1,8 +1,24 @@
 class Obstacles {
-  int[] obstacle1 = {0, 200, 500, 10};
-  int[] obstacle2 = {200, 400, 500, 10};
   
-  int[][] obstacles = { obstacle1, obstacle2 };
+  // Every array within the obstacles array
+  // should contain four integers and 
+  // represent one obstacle. The numbers
+  // represent { x, y, width, height }.
+  
+  int[][] obstacles = {
+    
+    // Four wall maze
+    {0,   200, 500, 10}, 
+    {200, 300, 500, 10},
+    {0,   400, 500, 10},
+    {200, 500, 500, 10},
+    
+    //{250, 670, 200, 10},
+    //{250, 30,  200, 10},
+    //{0,   350, 300, 10},
+    //{400, 350, 300, 10}
+    
+  };
   
   Obstacles() {
     // Contructor method
@@ -23,10 +39,20 @@ class Obstacles {
   
   // -----------------------------------------------------------------------------------------------------
   
-  boolean colliding(x, y) {
+  boolean colliding(float x, float y) {
+    boolean dead = false;
     
+    for(int i = 0; i < obstacles.length; i++) {
+      
+      if(x > obstacles[i][0] && x < obstacles[i][0] + obstacles[i][2] && y > obstacles[i][1] && y < obstacles[i][1] + obstacles[i][3]) {
+        
+        // If hit obstacle
+        dead = true;
+        
+      }
+    }
     
-    
+    return dead;
   }
   
   

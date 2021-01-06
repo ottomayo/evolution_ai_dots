@@ -11,7 +11,7 @@ class Dot {
   boolean isBest = false;
   
   Dot() {
-    brain = new Brain(350);
+    brain = new Brain(stepsPerGen);
     
     pos = new PVector(width/2, height - 10);
     vel = new PVector(0, 0);
@@ -41,6 +41,8 @@ class Dot {
   
   void move() {
     
+    // TODO: the generations are ending before all the dots die!!!!!!!!!!!!!!!!!!!!!
+    
     if(brain.directions.length > brain.step) {
       acc = brain.directions[brain.step];
       brain.step += 1;
@@ -68,10 +70,7 @@ class Dot {
         // If reached goal
         reachedGoal = true;
         
-      } else if(pos.x > 0 && pos.x < 500 && pos.y > 200 && pos.y < 210) {
-        // If hit obstacle
-        //dead = true;
-      } else if(pos.x > 200 && pos.x < 700 && pos.y > 400 && pos.y < 410) {
+      } else if(obstacles.colliding(pos.x, pos.y)) {
         // If hit obstacle
         dead = true;
       }
